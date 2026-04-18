@@ -1,0 +1,504 @@
+{
+  "scan_time": "2026-04-18T14:58:45.468404+00:00",
+  "top_trending": [
+    {
+      "symbol": "RAVE",
+      "mentions": 3,
+      "sources": [
+        "CoinGecko Trending",
+        "CoinGecko Movers"
+      ],
+      "signals": [
+        "\ud83d\udcc9 bearish (-24.2%)",
+        "\ud83d\udcc9 dumping (-25.3%)"
+      ]
+    },
+    {
+      "symbol": "SIREN",
+      "mentions": 3,
+      "sources": [
+        "CoinGecko Trending",
+        "CoinGecko Movers"
+      ],
+      "signals": [
+        "\ud83d\ude80 bullish (+15.7%)",
+        "\ud83d\ude80 pumping (+7.1%)"
+      ]
+    },
+    {
+      "symbol": "AVEX",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "VICI",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "MAAS",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "MXL",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "LION",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "ROAD",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "INFQ",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "BMI",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "PBF",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "DK",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "LYB",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "DOW",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "NVDA",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "INTC",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "NFLX",
+      "mentions": 3,
+      "sources": [
+        "Yahoo Most Active",
+        "Yahoo Gainers",
+        "Yahoo Losers"
+      ],
+      "signals": []
+    },
+    {
+      "symbol": "OVPP",
+      "mentions": 2,
+      "sources": [
+        "CoinGecko Trending"
+      ],
+      "signals": [
+        "\ud83d\udcc9 bearish (-17.3%)"
+      ]
+    },
+    {
+      "symbol": "PENGU",
+      "mentions": 2,
+      "sources": [
+        "CoinGecko Trending"
+      ],
+      "signals": [
+        "\ud83d\udcc9 bearish (-8.1%)"
+      ]
+    },
+    {
+      "symbol": "BTC",
+      "mentions": 2,
+      "sources": [
+        "CoinGecko Trending"
+      ],
+      "signals": [
+        "\ud83d\udcc9 bearish (-2.2%)"
+      ]
+    }
+  ],
+  "crypto_highlights": [
+    {
+      "symbol": "RAVE",
+      "name": "RaveDAO",
+      "rank": 36,
+      "price_change_24h": -24.19,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "SIREN",
+      "name": "Siren",
+      "rank": 100,
+      "price_change_24h": 15.67,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "OVPP",
+      "name": "OpenVPP",
+      "rank": 957,
+      "price_change_24h": -17.32,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "PENGU",
+      "name": "Pudgy Penguins",
+      "rank": 109,
+      "price_change_24h": -8.15,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "rank": 1,
+      "price_change_24h": -2.22,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "rank": 2,
+      "price_change_24h": -3.52,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "SOL",
+      "name": "Solana",
+      "rank": 7,
+      "price_change_24h": -3.87,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "HYPE",
+      "name": "Hyperliquid",
+      "rank": 13,
+      "price_change_24h": -1.05,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "MON",
+      "name": "Monad",
+      "rank": 121,
+      "price_change_24h": -8.81,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "ASTEROID",
+      "name": "Asteroid Shiba",
+      "rank": 903,
+      "price_change_24h": -30.86,
+      "source": "coingecko_trending"
+    },
+    {
+      "symbol": "DEXE",
+      "name": "DeXe",
+      "price": 14.14,
+      "change_24h": 18.84,
+      "volume": 43186427,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "WLD",
+      "name": "Worldcoin",
+      "price": 0.275706,
+      "change_24h": -12.37,
+      "volume": 224965186,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "JST",
+      "name": "JUST",
+      "price": 0.07144,
+      "change_24h": 9.51,
+      "volume": 35396302,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "ZEC",
+      "name": "Zcash",
+      "price": 324.58,
+      "change_24h": -6.84,
+      "volume": 347240975,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "ALGO",
+      "name": "Algorand",
+      "price": 0.109027,
+      "change_24h": -6.74,
+      "volume": 43358869,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "RENDER",
+      "name": "Render",
+      "price": 1.83,
+      "change_24h": -6.64,
+      "volume": 114934114,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "SUI",
+      "name": "Sui",
+      "price": 0.968782,
+      "change_24h": -6.45,
+      "volume": 433848749,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "KAS",
+      "name": "Kaspa",
+      "price": 0.03447453,
+      "change_24h": -6.37,
+      "volume": 29933855,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "XDC",
+      "name": "XDC Network",
+      "price": 0.03034792,
+      "change_24h": -6.25,
+      "volume": 25221271,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "PEPE",
+      "name": "Pepe",
+      "price": 3.83e-06,
+      "change_24h": -6.12,
+      "volume": 446465517,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "PUMP",
+      "name": "Pump.fun",
+      "price": 0.00191661,
+      "change_24h": -6.04,
+      "volume": 54718437,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "APT",
+      "name": "Aptos",
+      "price": 0.94653,
+      "change_24h": -5.96,
+      "volume": 95787928,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "ICP",
+      "name": "Internet Computer",
+      "price": 2.53,
+      "change_24h": -5.77,
+      "volume": 42952313,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "QNT",
+      "name": "Quant",
+      "price": 75.43,
+      "change_24h": -5.68,
+      "volume": 11627705,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "ADA",
+      "name": "Cardano",
+      "price": 0.251625,
+      "change_24h": -5.55,
+      "volume": 453059791,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "ONDO",
+      "name": "Ondo",
+      "price": 0.261302,
+      "change_24h": -5.22,
+      "volume": 67762546,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "AVAX",
+      "name": "Avalanche",
+      "price": 9.43,
+      "change_24h": -5.15,
+      "volume": 307940849,
+      "source": "coingecko_movers"
+    },
+    {
+      "symbol": "DOGE",
+      "name": "Dogecoin",
+      "price": 0.09612,
+      "change_24h": -4.94,
+      "volume": 1868128584,
+      "source": "coingecko_movers"
+    }
+  ],
+  "stock_highlights": [
+    {
+      "symbol": "AVEX",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "VICI",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "MAAS",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "MXL",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "LION",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "ROAD",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "INFQ",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "BMI",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "PBF",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "DK",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "LYB",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "DOW",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "NVDA",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "INTC",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    },
+    {
+      "symbol": "NFLX",
+      "category": "gainers",
+      "source": "yahoo_gainers"
+    }
+  ],
+  "social_buzz": [],
+  "breaking_news": []
+}
