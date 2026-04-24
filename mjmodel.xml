@@ -1,0 +1,213 @@
+<mujoco model="Humanoid">
+  <compiler angle="radian"/>
+
+  <option timestep="0.005"/>
+
+  <size nkey="4"/>
+
+  <visual>
+    <global azimuth="120" elevation="-20" offwidth="2560" offheight="1440"/>
+    <map force="0.1" zfar="30"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+
+  <statistic center="0 0 0.7"/>
+
+  <default>
+    <general ctrllimited="true" ctrlrange="-1 1"/>
+    <default class="body">
+      <joint solimplimit="0 0.99 0.01" stiffness="1" limited="true" armature="0.01" damping="0.2"/>
+      <geom type="capsule" condim="1" group="1" friction="0.7" solref="0.015" solimp="0.9 0.99 0.003" material="body"/>
+      <default class="thigh">
+        <geom size="0.06 0 0"/>
+      </default>
+      <default class="shin">
+        <geom size="0.049 0 0"/>
+      </default>
+      <default class="foot">
+        <geom size="0.027 0 0"/>
+        <default class="foot1"/>
+        <default class="foot2"/>
+      </default>
+      <default class="arm_upper">
+        <geom size="0.04 0 0"/>
+      </default>
+      <default class="arm_lower">
+        <geom size="0.031 0 0"/>
+      </default>
+      <default class="hand">
+        <geom size="0.04 0 0" type="sphere"/>
+      </default>
+      <default class="joint_big">
+        <joint stiffness="10" damping="5"/>
+        <default class="hip_x">
+          <joint range="-30 10"/>
+        </default>
+        <default class="hip_z">
+          <joint range="-60 35"/>
+        </default>
+        <default class="hip_y">
+          <joint range="-150 20"/>
+        </default>
+        <default class="joint_big_stiff">
+          <joint stiffness="20"/>
+        </default>
+      </default>
+      <default class="knee">
+        <joint range="-160 2"/>
+      </default>
+      <default class="ankle">
+        <joint range="-50 50"/>
+        <default class="ankle_y">
+          <joint stiffness="6"/>
+        </default>
+        <default class="ankle_x">
+          <joint stiffness="3"/>
+        </default>
+      </default>
+      <default class="shoulder">
+        <joint range="-85 60"/>
+      </default>
+      <default class="elbow">
+        <joint stiffness="0" range="-100 50"/>
+      </default>
+    </default>
+  </default>
+
+  <asset>
+    <texture type="skybox" colorspace="auto" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="32" height="192"/>
+    <texture type="cube" colorspace="auto" name="body" builtin="flat" mark="cross" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" markrgb="1 1 1" width="128" height="768"/>
+    <texture type="2d" colorspace="auto" name="grid" builtin="checker" rgb1="0.1 0.2 0.3" rgb2="0.2 0.3 0.4" width="512" height="512"/>
+    <material name="body" texture="body" texuniform="true" rgba="0.8 0.6 0.4 1"/>
+    <material name="grid" texture="grid" texuniform="true" reflectance="0.2"/>
+  </asset>
+
+  <worldbody>
+    <geom name="floor" size="0 0 0.05" type="plane" material="grid"/>
+    <light name="spotlight" target="torso" pos="0 -6 4" dir="0 0 -1" cutoff="30" diffuse="0.8 0.8 0.8" mode="targetbodycom"/>
+    <light name="top" pos="0 0 2" dir="0 0 -1" mode="trackcom"/>
+    <body name="torso" childclass="body" pos="0 0 1.282">
+      <joint name="root" type="free" solimplimit="0.9 0.95 0.001" stiffness="0" armature="0" damping="0"/>
+      <geom name="torso" size="0.07 0.07" quat="0.707107 0.707107 0 0"/>
+      <geom name="waist_upper" size="0.06 0.06" pos="-0.01 0 -0.12" quat="0.707107 0.707107 0 0"/>
+      <camera name="back" pos="-3 0 1" quat="0.601501 0.371748 -0.371748 -0.601501" mode="trackcom"/>
+      <camera name="side" pos="0 -3 1" quat="0.850651 0.525731 0 0" mode="trackcom"/>
+      <body name="head" pos="0 0 0.19">
+        <geom name="head" size="0.09" type="sphere"/>
+        <camera name="egocentric" pos="0.09 0 0" quat="0.524286 0.474472 -0.474472 -0.524286" fovy="80"/>
+      </body>
+      <body name="waist_lower" pos="-0.01 0 -0.26">
+        <joint name="abdomen_z" class="joint_big_stiff" pos="0 0 0.065" axis="0 0 1" range="-0.785398 0.785398"/>
+        <joint name="abdomen_y" class="joint_big" pos="0 0 0.065" axis="0 1 0" range="-1.309 0.523599"/>
+        <geom name="waist_lower" size="0.06 0.06" quat="0.707107 0.707107 0 0"/>
+        <body name="pelvis" pos="0 0 -0.165">
+          <joint name="abdomen_x" class="joint_big" pos="0 0 0.1" axis="1 0 0" range="-0.610865 0.610865"/>
+          <geom name="butt" size="0.09 0.07" pos="-0.02 0 0" quat="0.707107 0.707107 0 0"/>
+          <body name="thigh_right" pos="0 -0.1 -0.04">
+            <joint name="hip_x_right" class="hip_x" pos="0 0 0" axis="1 0 0" range="-0.523599 0.174533"/>
+            <joint name="hip_z_right" class="hip_z" pos="0 0 0" axis="0 0 1" range="-1.0472 0.610865"/>
+            <joint name="hip_y_right" class="hip_y" pos="0 0 0" axis="0 1 0" range="-2.61799 0.349066"/>
+            <geom name="thigh_right" class="thigh" size="0.06 0.170074" pos="0 0.005 -0.17" quat="0.999892 0.0147011 0 0"/>
+            <body name="shin_right" pos="0 0.01 -0.4">
+              <joint name="knee_right" class="knee" pos="0 0 0.02" axis="0 -1 0" range="-2.79253 0.0349066"/>
+              <geom name="shin_right" class="shin" size="0.049 0.15" pos="0 0 -0.15"/>
+              <body name="foot_right" pos="0 0 -0.39">
+                <joint name="ankle_y_right" class="ankle_y" pos="0 0 0.08" axis="0 1 0" range="-0.872665 0.872665"/>
+                <joint name="ankle_x_right" class="ankle_x" pos="0 0 0.04" axis="0.894427 0 0.447214" range="-0.872665 0.872665"/>
+                <geom name="foot1_right" class="foot1" size="0.027 0.105475" pos="0.035 -0.02 0" quat="0.707107 -0.0670402 -0.703922 0"/>
+                <geom name="foot2_right" class="foot2" size="0.027 0.105475" pos="0.035 0.02 0" quat="0.707107 0.0670402 -0.703922 0"/>
+              </body>
+            </body>
+          </body>
+          <body name="thigh_left" pos="0 0.1 -0.04">
+            <joint name="hip_x_left" class="hip_x" pos="0 0 0" axis="-1 0 0" range="-0.523599 0.174533"/>
+            <joint name="hip_z_left" class="hip_z" pos="0 0 0" axis="0 0 -1" range="-1.0472 0.610865"/>
+            <joint name="hip_y_left" class="hip_y" pos="0 0 0" axis="0 1 0" range="-2.61799 0.349066"/>
+            <geom name="thigh_left" class="thigh" size="0.06 0.170074" pos="0 -0.005 -0.17" quat="0.999892 -0.0147011 0 0"/>
+            <body name="shin_left" pos="0 -0.01 -0.4">
+              <joint name="knee_left" class="knee" pos="0 0 0.02" axis="0 -1 0" range="-2.79253 0.0349066"/>
+              <geom name="shin_left" class="shin" size="0.049 0.15" pos="0 0 -0.15"/>
+              <body name="foot_left" pos="0 0 -0.39">
+                <joint name="ankle_y_left" class="ankle_y" pos="0 0 0.08" axis="0 1 0" range="-0.872665 0.872665"/>
+                <joint name="ankle_x_left" class="ankle_x" pos="0 0 0.04" axis="-0.894427 0 -0.447214" range="-0.872665 0.872665"/>
+                <geom name="foot1_left" class="foot1" size="0.027 0.105475" pos="0.035 -0.02 0" quat="0.707107 -0.0670402 -0.703922 0"/>
+                <geom name="foot2_left" class="foot2" size="0.027 0.105475" pos="0.035 0.02 0" quat="0.707107 0.0670402 -0.703922 0"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="upper_arm_right" pos="0 -0.17 0.06">
+        <joint name="shoulder1_right" class="shoulder" pos="0 0 0" axis="0.816497 0.408248 0.408248" range="-1.48353 1.0472"/>
+        <joint name="shoulder2_right" class="shoulder" pos="0 0 0" axis="0 -0.707107 0.707107" range="-1.48353 1.0472"/>
+        <geom name="upper_arm_right" class="arm_upper" size="0.04 0.138564" pos="0.08 -0.08 -0.08" quat="0.888074 -0.325058 -0.325058 0"/>
+        <body name="lower_arm_right" pos="0.18 -0.18 -0.18">
+          <joint name="elbow_right" class="elbow" pos="0 0 0" axis="0 -0.707107 0.707107" range="-1.74533 0.872665"/>
+          <geom name="lower_arm_right" class="arm_lower" size="0.031 0.138564" pos="0.09 0.09 0.09" quat="0.459701 0.627963 -0.627963 0"/>
+          <body name="hand_right" pos="0.18 0.18 0.18">
+            <geom name="hand_right" class="hand" quat="0.888074 -0.325058 0.325058 0"/>
+          </body>
+        </body>
+      </body>
+      <body name="upper_arm_left" pos="0 0.17 0.06">
+        <joint name="shoulder1_left" class="shoulder" pos="0 0 0" axis="-0.816497 0.408248 -0.408248" range="-1.48353 1.0472"/>
+        <joint name="shoulder2_left" class="shoulder" pos="0 0 0" axis="0 -0.707107 -0.707107" range="-1.48353 1.0472"/>
+        <geom name="upper_arm_left" class="arm_upper" size="0.04 0.138564" pos="0.08 0.08 -0.08" quat="0.888074 0.325058 -0.325058 0"/>
+        <body name="lower_arm_left" pos="0.18 0.18 -0.18">
+          <joint name="elbow_left" class="elbow" pos="0 0 0" axis="0 -0.707107 -0.707107" range="-1.74533 0.872665"/>
+          <geom name="lower_arm_left" class="arm_lower" size="0.031 0.138564" pos="0.09 -0.09 0.09" quat="0.459701 -0.627963 -0.627963 0"/>
+          <body name="hand_left" pos="0.18 -0.18 0.18">
+            <geom name="hand_left" class="hand" quat="0.888074 0.325058 0.325058 0"/>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <contact>
+    <exclude body1="waist_lower" body2="thigh_right"/>
+    <exclude body1="waist_lower" body2="thigh_left"/>
+  </contact>
+
+  <tendon>
+    <fixed name="hamstring_right" limited="true" range="-0.3 2">
+      <joint joint="hip_y_right" coef="0.5"/>
+      <joint joint="knee_right" coef="-0.5"/>
+    </fixed>
+    <fixed name="hamstring_left" limited="true" range="-0.3 2">
+      <joint joint="hip_y_left" coef="0.5"/>
+      <joint joint="knee_left" coef="-0.5"/>
+    </fixed>
+  </tendon>
+
+  <actuator>
+    <general name="abdomen_z" joint="abdomen_z" gear="40 0 0 0 0 0"/>
+    <general name="abdomen_y" joint="abdomen_y" gear="40 0 0 0 0 0"/>
+    <general name="abdomen_x" joint="abdomen_x" gear="40 0 0 0 0 0"/>
+    <general name="hip_x_right" joint="hip_x_right" gear="40 0 0 0 0 0"/>
+    <general name="hip_z_right" joint="hip_z_right" gear="40 0 0 0 0 0"/>
+    <general name="hip_y_right" joint="hip_y_right" gear="120 0 0 0 0 0"/>
+    <general name="knee_right" joint="knee_right" gear="80 0 0 0 0 0"/>
+    <general name="ankle_y_right" joint="ankle_y_right" gear="20 0 0 0 0 0"/>
+    <general name="ankle_x_right" joint="ankle_x_right" gear="20 0 0 0 0 0"/>
+    <general name="hip_x_left" joint="hip_x_left" gear="40 0 0 0 0 0"/>
+    <general name="hip_z_left" joint="hip_z_left" gear="40 0 0 0 0 0"/>
+    <general name="hip_y_left" joint="hip_y_left" gear="120 0 0 0 0 0"/>
+    <general name="knee_left" joint="knee_left" gear="80 0 0 0 0 0"/>
+    <general name="ankle_y_left" joint="ankle_y_left" gear="20 0 0 0 0 0"/>
+    <general name="ankle_x_left" joint="ankle_x_left" gear="20 0 0 0 0 0"/>
+    <general name="shoulder1_right" joint="shoulder1_right" gear="20 0 0 0 0 0"/>
+    <general name="shoulder2_right" joint="shoulder2_right" gear="20 0 0 0 0 0"/>
+    <general name="elbow_right" joint="elbow_right" gear="40 0 0 0 0 0"/>
+    <general name="shoulder1_left" joint="shoulder1_left" gear="20 0 0 0 0 0"/>
+    <general name="shoulder2_left" joint="shoulder2_left" gear="20 0 0 0 0 0"/>
+    <general name="elbow_left" joint="elbow_left" gear="40 0 0 0 0 0"/>
+  </actuator>
+
+  <keyframe>
+    <key name="squat" qpos="0 0 0.596 0.988015 0 0.154359 0 0 0.4 0 -0.25 -0.5 -2.5 -2.65 -0.8 0.56 -0.25 -0.5 -2.5 -2.65 -0.8 0.56 0 0 0 0 0 0"/>
+    <key name="stand_on_left_leg" qpos="0 0 1.21948 0.971588 -0.179973 0.135318 -0.0729076 -0.0516 -0.202 0.23 -0.24 -0.007 -0.34 -1.76 -0.466 -0.0415 -0.08 -0.01 -0.37 -0.685 -0.35 -0.09 0.109 -0.067 -0.7 -0.05 0.12 0.16"/>
+    <key name="prone" qpos="0.4 0 0.0757706 0.7325 0 0.680767 0 0 0.0729 0 0.0077 0.0019 -0.026 -0.351 -0.27 0 0.0077 0.0019 -0.026 -0.351 -0.27 0 0.56 -0.62 -1.752 0.56 -0.62 -1.752"/>
+    <key name="supine" qpos="-0.4 0 0.08122 0.722788 0 -0.69107 0 0 -0.25 0 0.0182 0.0142 0.3 0.042 -0.44 -0.02 0.0182 0.0142 0.3 0.042 -0.44 -0.02 0.186 -0.73 -1.73 0.186 -0.73 -1.73"/>
+  </keyframe>
+</mujoco>

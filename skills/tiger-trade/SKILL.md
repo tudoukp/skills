@@ -1,55 +1,57 @@
 ---
 name: tiger-trade
-description: Tiger Trade 自动化交易工具。通过相对位置坐标自动执行买入、卖出、市价单、限价单等交易操作。当用户提到「老虎交易」、「Tiger Trade 自动下单」、「自动买入/卖出股票」时使用此 Skill。
+description: Tiger Trade automation tool. Executes buy, sell, market orders, and limit orders via relative coordinate-based automation. Use when the user mentions "Tiger Trade", "automated trading", or "auto buy/sell stocks".
 ---
 
-# Tiger Trade 自动化交易
+# Tiger Trade Automated Trading
 
-## 命令格式
+> ⚠️ **Live trading requires unlocking first.** Before executing any real trades, make sure the trading function is unlocked in Tiger Trade. Trading with locked accounts is not supported.
+
+## Command Format
 
 ```bash
-python scripts/trade.py --code <股票代码> --action <buy|sell> --order_type <market|limit> --price <价格> --quantity <数量>
+python scripts/trade.py --code <stock_code> --action <buy|sell> --order_type <market|limit> --price <price> --quantity <quantity>
 ```
 
-## 参数说明
+## Parameters
 
-| 参数 | 必填 | 说明 |
-|------|------|------|
-| `--code` | ✅ | 股票代码，如 `600519` |
-| `--action` | ✅ | `buy`（买入）或 `sell`（卖出） |
-| `--order_type` | ✅ | `market`（市价单）或 `limit`（限价单） |
-| `--price` | 限价单必填 | 限价单价格 |
-| `--quantity` | ✅ | 交易数量（股数） |
+| Parameter | Required | Description |
+|-----------|----------|-------------|
+| `--code` | ✅ | Stock code, e.g. `AAPL` |
+| `--action` | ✅ | `buy` or `sell` |
+| `--order_type` | ✅ | `market` (market order) or `limit` (limit order) |
+| `--price` | Required for limit orders | Limit order price |
+| `--quantity` | ✅ | Number of shares |
 
-## 使用示例
+## Usage Examples
 
-**市价买入**：
+**Market buy:**
 ```bash
-python scripts/trade.py --code 600519 --action buy --order_type market --quantity 100
+python scripts/trade.py --code AAPL --action buy --order_type market --quantity 100
 ```
 
-**限价买入**：
+**Limit buy:**
 ```bash
-python scripts/trade.py --code 600519 --action buy --order_type limit --price 1800 --quantity 100
+python scripts/trade.py --code AAPL --action buy --order_type limit --price 180 --quantity 100
 ```
 
-**市价卖出**：
+**Market sell:**
 ```bash
-python scripts/trade.py --code 600519 --action sell --order_type market --quantity 100
+python scripts/trade.py --code AAPL --action sell --order_type market --quantity 100
 ```
 
-**限价卖出**：
+**Limit sell:**
 ```bash
-python scripts/trade.py --code 600519 --action sell --order_type limit --price 1850 --quantity 100
+python scripts/trade.py --code AAPL --action sell --order_type limit --price 185 --quantity 100
 ```
 
-## 使用前提
+## Prerequisites
 
-1. **安装依赖**：`pip install pyautogui pywin32 numpy`
-2. Tiger Trade 窗口已打开并处于交易界面
+1. **Install dependencies**: `pip install pyautogui pywin32 numpy`
+2. Tiger Trade window is open and on the trading interface
 
-## 注意事项
+## Notes
 
-1. 交易过程中请勿移动鼠标或切换窗口
-2. 限价单必须指定 `--price`，市价单无需指定价格
-3. 建议先在模拟交易中测试
+1. Do not move the mouse or switch windows during trading operations
+2. Limit orders must specify `--price`; market orders do not require a price
+3. Recommended to test first with paper trading
