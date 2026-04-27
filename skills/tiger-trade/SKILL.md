@@ -55,3 +55,4 @@ python scripts/trade.py --code AAPL --action sell --order_type limit --price 185
 1. Do not move the mouse or switch windows during trading operations
 2. Limit orders must specify `--price`; market orders do not require a price
 3. Recommended to test first with paper trading
+4. **Only one script at a time**: Do not run multiple trade.py scripts simultaneously. You must wait for the current script to finish (success or failure) before starting the next one. Running a new script while a previous one is still executing may cause order conflicts or window state issues.

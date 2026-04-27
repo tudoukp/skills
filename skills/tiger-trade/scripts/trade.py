@@ -1,11 +1,17 @@
 """Tiger Trade 交易自动化脚本 - 相对位置版本"""
 import argparse
 import time
+import os
 import win32gui
 import win32con
 import win32api
 import pyautogui
 import ctypes
+
+
+# 锁文件配置
+LOCK_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".trade_lock")
+LOCK_TIMEOUT = 60  # 锁超时时间（秒）
 
 
 # 获取 DPI 缩放比例
@@ -82,6 +88,64 @@ class TradeAutomationError(Exception):
 class WindowNotFoundError(TradeAutomationError):
     """窗口未找到"""
     pass
+
+
+class ScriptLockError(TradeAutomationError):
+    """脚本锁定异常"""
+    pass
+
+
+def acquire_lock():
+    """
+    获取脚本锁
+    - 超时时间 60 秒
+    - 如果锁文件存在且未超时，返回 False 并提示
+    - 如果锁文件存在但已超时，自动删除并获取新锁
+    - 获取成功后返回 True
+    """
+    # 检查锁文件是否存在
+    if os.path.exists(LOCK_FILE):
+        try:
+            # 读取锁文件内容（包含创建时间）
+            with open(LOCK_FILE, 'r') as f:
+                lock_time = float(f.read().strip())
+
+            current_time = time.time()
+            elapsed = current_time - lock_time
+
+            # 检查锁是否超时
+            if elapsed < LOCK_TIMEOUT:
+                print(f"\n[警告] 脚本正在运行中，请稍后再试")
+                print(f"[提示] 锁将在 {int(LOCK_TIMEOUT - elapsed)} 秒后自动释放")
+                return False
+            else:
+                # 锁已超时，删除旧锁文件
+                print(f"[提示] 检测到超时的锁文件，自动清理并获取新锁")
+                os.remove(LOCK_FILE)
+        except (ValueError, IOError):
+            # 锁文件内容无效，删除并创建新的
+            try:
+                os.remove(LOCK_FILE)
+            except:
+                pass
+
+    # 创建锁文件
+    try:
+        with open(LOCK_FILE, 'w') as f:
+            f.write(str(time.time()))
+        return True
+    except Exception as e:
+        print(f"[错误] 无法创建锁文件: {e}")
+        return False
+
+
+def release_lock():
+    """释放脚本锁"""
+    try:
+        if os.path.exists(LOCK_FILE):
+            os.remove(LOCK_FILE)
+    except:
+        pass
 
 
 def find_window(name):
@@ -291,6 +355,10 @@ def check_confirm_dialog(window_rect):
 
 
 def main():
+    # 获取脚本锁
+    if not acquire_lock():
+        return 1
+
     try:
         parser = argparse.ArgumentParser(description='Tiger Trade 自动化交易（相对位置版）')
         parser.add_argument('--code', required=True, help='股票代码')
@@ -354,6 +422,8 @@ def main():
     except Exception as e:
         print(f"\n[ERROR] {e}")
         return 1
+    finally:
+        release_lock()
 
     return 0
 
